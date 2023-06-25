@@ -1,20 +1,16 @@
-import { getAuth, signOut } from 'firebase/auth'
 import React from 'react'
+import { getAuth, signOut } from 'firebase/auth'
+import { auth } from '../firebase'
 import { Link, useNavigate } from 'react-router-dom'
 import './css/Navber.css'
 
 const Navbar = ({ isAuth, setIsAuth }) => {
     const navigate = useNavigate();
-    // const handleLogout = async () => {
-    //     const auth = getAuth();
-    //     await signOut(auth);
-    // };
-
     const handleLogout = () => {
         signOut(auth).then(() => {
             localStorage.clear();
             setIsAuth(false);
-            navigate('login')
+            navigate("/");
         });
     }
 

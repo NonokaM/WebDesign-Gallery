@@ -9,7 +9,9 @@ const Login = ({ setIsAuth }) => {
     const loginInWithGoogle = () => {
         signInWithPopup(auth, provider).then((result) => {
             localStorage.setItem("isAuth", true);
+            console.log('OK');
             setIsAuth(true);
+            console.log('OK2');
             navigate("/");
         });
     };
@@ -23,4 +25,3 @@ const Login = ({ setIsAuth }) => {
 }
 
 export default Login
-

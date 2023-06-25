@@ -13,14 +13,14 @@ import Search from './components/Search';
 
 
 function App() {
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth") === 'true');
 
   return (
     <Router>
       <Navber isAuth={isAuth} setIsAuth={setIsAuth}/>
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/login' element={<Login isAuth={setIsAuth} />}></Route>
+        <Route path='/login' element={<Login setIsAuth={setIsAuth} />}></Route>
         <Route path='/create' element={<CreatePost />}></Route>
         <Route path='/posts/:id' element={<ViewPost />}></Route>
         <Route path='/user' element={<UserPage />}></Route>
