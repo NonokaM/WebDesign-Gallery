@@ -1,5 +1,7 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState } from 'react';
+
 import Navber from './components/Navber';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -9,14 +11,16 @@ import UserPage from './components/UserPage';
 import EditUserPage from './components/EditUserPage';
 import Search from './components/Search';
 
+
 function App() {
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   return (
     <Router>
-      <Navber />
+      <Navber isAuth={isAuth} />
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/login' element={<Login />}></Route>
+        <Route path='/login' element={<Login isAuth={setIsAuth} />}></Route>
         <Route path='/create' element={<CreatePost />}></Route>
         <Route path='/posts/:id' element={<ViewPost />}></Route>
         <Route path='/user' element={<UserPage />}></Route>
