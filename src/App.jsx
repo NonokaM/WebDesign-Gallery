@@ -17,7 +17,7 @@ function App() {
 
   return (
     <Router>
-      <Navber isAuth={isAuth} />
+      <Navber isAuth={isAuth} setIsAuth={setIsAuth}/>
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/login' element={<Login isAuth={setIsAuth} />}></Route>

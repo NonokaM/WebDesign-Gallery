@@ -1,4 +1,5 @@
 import React from 'react'
+import './css/UserPage.css'
 
 const EditUserPage = () => {
     return (

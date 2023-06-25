@@ -1,4 +1,5 @@
 import React from 'react'
+import './css/ViewPost.css'
 
 const ViewPost = () => {
     return (

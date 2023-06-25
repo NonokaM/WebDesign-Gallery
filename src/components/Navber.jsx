@@ -1,7 +1,23 @@
+import { getAuth, signOut } from 'firebase/auth'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import './css/Navber.css'
 
-const Navber = ({ isAuth }) => {
+const Navbar = ({ isAuth, setIsAuth }) => {
+    const navigate = useNavigate();
+    // const handleLogout = async () => {
+    //     const auth = getAuth();
+    //     await signOut(auth);
+    // };
+
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            localStorage.clear();
+            setIsAuth(false);
+            navigate('login')
+        });
+    }
+
     return (
         <nav>
             <Link to="/">Home</Link>
@@ -11,11 +27,16 @@ const Navber = ({ isAuth }) => {
             ) : (
             <>
                 <Link to="/create">create</Link>
-                <Link to="/user">user</Link>
+                <div className="dropdown">
+                    <Link className="dropbtn" to="/user">user</Link>
+                    <div className="dropdown-content">
+                        <Link to="/user">user</Link>
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>
+                </div>
             </>
         )}
         </nav>
-    )
-}
+    )}
 
-export default Navber
+export default Navbar
