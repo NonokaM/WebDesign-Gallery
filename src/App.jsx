@@ -21,9 +21,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/login' element={<Login setIsAuth={setIsAuth} />}></Route>
-        <Route path='/create' element={<CreatePost />}></Route>
+        <Route path='/create' element={<CreatePost isAuth={isAuth}/>}></Route>
         <Route path='/posts/:id' element={<ViewPost />}></Route>
-        <Route path='/user' element={<UserPage />}></Route>
+        <Route path='/user' element={<UserPage isAuth={isAuth}/>}></Route>
         <Route path='/user/edit' element={<EditUserPage />}></Route>
         <Route path='/search' element={<Search />}></Route>
       </Routes>
